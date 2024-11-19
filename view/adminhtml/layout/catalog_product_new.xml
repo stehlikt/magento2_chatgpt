@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <link src='Railsformers_ChatGPT::js/generate.js'/>
+        <link src='Railsformers_ChatGPT::css/seo_button.css'/>
+    </head>
+    <body>
+        <referenceContainer name="content">
+            <block class="Magento\Framework\View\Element\Template" template="Railsformers_ChatGPT::js.phtml"/>
+        </referenceContainer>
+    </body>
+</page>
+

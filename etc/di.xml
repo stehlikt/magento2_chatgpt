@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Framework\Console\CommandList">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="chatgpt_generate-content" xsi:type="object">Railsformers\ChatGPT\Console\Command\GenerateContent</item>
+                <item name="chatgpt_clear-log" xsi:type="object">Railsformers\ChatGPT\Console\Command\ClearLog</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Railsformers\ChatGPT\Helper\Options">
+        <arguments>
+            <argument name="data" xsi:type="array">
+                <item name="urlPath" xsi:type="string">up_chatgpt/index/generateproductsurl</item>
+                <item name="paramName" xsi:type="string">type</item>
+                <item name="confirm" xsi:type="array">
+                    <item name="title" xsi:type="string" translatable="true">Generovat obsah skrze ChatGPT</item>
+                    <item name="message" xsi:type="string" translatable="true">Jste si jisti, že chcete generovat obsah ?</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+</config>

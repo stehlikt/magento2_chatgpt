@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="chatgpt" translate="label" sortOrder="105" class="ultraplugin-tab">
+            <label>ChatGPT</label>
+        </tab>
+        <section id="chatgpt" translate="label" sortOrder="20" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>ChatGPT AI</label>
+            <tab>chatgpt</tab>
+            <resource>Railsformers_ChatGPT::configuration</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1">
+                <label>ChatGPT AI</label>
+                <field id="enabled" translate="label" type="select" sortOrder="10" showInDefault="1">
+                    <label>Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="api_secret" translate="label" type="obscure" sortOrder="20" showInDefault="1">
+                    <label>API Secret</label>
+                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+                    <comment><![CDATA[Generate API key from <a href="https://platform.openai.com/account/api-keys">here</a>]]></comment>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+              <!--  <field id="attribute" translate="label" type="select" sortOrder="30" showInDefault="1" canRestore="1">
+                    <label>Product Attribute</label>
+                    <comment>Generate content based on selected product attribute value</comment>
+                    <source_model>Railsformers\ChatGPT\Model\Config\Source\Attributes</source_model>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field> -->
+                <field id="chatgpt_language" translate="label" type="select" sortOrder="30" showInDefault="1" canRestore="1">
+                    <label>ChatGPT Language</label>
+                    <comment>Select ChatGPT language</comment>
+                    <source_model>Railsformers\ChatGPT\Model\Config\Source\LanguageOptions</source_model>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+                <field id="description_words_count" translate="label" type="text" sortOrder="40" showInDefault="1" canRestore="1">
+                    <label>Description Word Count</label>
+                    <comment>Please enter the desired word count for generating the description. Note that higher word counts may result in longer API response times.</comment>
+                    <validate>required-entry validate-digits</validate>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+                <field id="short_description_words_count" translate="label" type="text" sortOrder="50" showInDefault="1" canRestore="1">
+                    <label>Short Description Word Count</label>
+                    <comment>Please enter the desired word count for generating the short description. Note that higher word counts may result in longer API response times.</comment>
+                    <validate>required-entry validate-digits</validate>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+                <field id="meta_title_words_count" translate="label" type="text" sortOrder="55" showInDefault="1" canRestore="1">
+                    <label>Meta Title Word Count</label>
+                    <comment>Please enter the desired word count for generating the meta title. Note that higher word counts may result in longer API response times.</comment>
+                    <validate>required-entry validate-digits</validate>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+                <field id="meta_description_words_count" translate="label" type="text" sortOrder="60" showInDefault="1" canRestore="1">
+                    <label>Meta Description Word Count</label>
+                    <comment>Please enter the desired word count for generating the meta description. Note that higher word counts may result in longer API response times.</comment>
+                    <validate>required-entry validate-digits</validate>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+
+            </group>
+        </section>
+    </system>
+</config>

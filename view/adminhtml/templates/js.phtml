@@ -1,0 +1,18 @@
+<?php
+
+/**
+ * @var \Magento\Framework\View\Element\Template $block
+ * @var \Railsformers\ChatGPT\Helper\Data $helper
+ */
+$helper = $this->helper('Railsformers\ChatGPT\Helper\Data');
+$obejctManager = \Magento\Framework\App\ObjectManager::getInstance();
+$request = $obejctManager->get('Magento\Framework\App\Request\Http');
+$controller = $request->getControllerName();
+?>
+<script>
+    window.chatGptAjaxUrl = '<?= /* @noEscape */  $block->getUrl('up_chatgpt/index/generate') ?>';
+    window.chatGptSeoAjaxUrl = '<?= /* @noEscape */  $block->getUrl('up_chatgpt/index/generate') ?>';
+    window.isUpChatGptEnabled = '<?= /* @noEscape */ $helper->isEnabled() ?>';
+    var controller = '<?= $controller ?>'
+    var id = '<?= (int)$this->getRequest()->getParam('id') ?>'
+</script>

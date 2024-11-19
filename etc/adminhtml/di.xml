@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Magento\Framework\Data\Form\Element\Editor" type="Railsformers\ChatGPT\Data\Form\Element\Editor"/>
+    <virtualType name="Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\Pool" type="Magento\Ui\DataProvider\Modifier\Pool">
+        <arguments>
+            <argument name="modifiers" xsi:type="array">
+                <item name="custommodifierg" xsi:type="array">
+                    <item name="class" xsi:type="string">Railsformers\ChatGPT\Block\Adminhtml\Product\CustomModifier</item>
+                    <item name="sortOrder" xsi:type="number">90</item>
+                </item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Railsformers\ChatGPT\Block\Adminhtml\Product\CustomModifier">
+        <arguments>
+            <argument name="scopeName" xsi:type="string">product_form.product_form</argument>
+        </arguments>
+    </type>
+    <type name="Magento\Ui\Component\Form\Element\Button">
+        <arguments>
+            <argument name="jsLayout" xsi:type="array">
+                <item name="components" xsi:type="array">
+                    <item name="button" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="component" xsi:type="string">Railsformers_ChatGPT/js/button</item>
+                        </item>
+                    </item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Framework\Console\CommandList">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="chatgpt_generate_content" xsi:type="object">Railsformers\ChatGPT\Console\Command\GenerateContent</item>
+            </argument>
+        </arguments>
+    </type>
+</config>

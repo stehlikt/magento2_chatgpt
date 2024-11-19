@@ -1,0 +1,81 @@
+<!--
+<button style="margin-bottom: 0.5rem;" type="button" id="generate_content" onclick="window.location.href = '<?php echo str_replace('admin/','',$block->getButtonUrl()) ?>';">
+    Generate categories content from ChatGPT <br>
+    <?php echo str_replace('admin/','',$block->getButtonUrl()) ?>
+</button>
+-->
+
+<button style="margin-bottom: 0.5rem;" id="button">
+    <span><?= $block->escapeHtml(__('Generovat obsah pomocí ChatGPT')) ?></span>
+</button>
+
+<div id="modal">
+    <div class="modal-body-content">
+        <h2>Vyberte co všechno chcete generovat</h2>
+        <div class="checkbox-group">
+            <input type="checkbox" id="all" name="all" value="all">
+            <label for="all">Vše</label>
+            <br>
+            <input type="checkbox" id="description" name="description" value="description">
+            <label for="description">Popis</label>
+            <br>
+            <input type="checkbox" id="meta_title" name="meta_title" value="metaTitle">
+            <label for="meta_title">Meta Titulek</label>
+            <br>
+            <input type="checkbox" id="meta_description" name="meta_description" value="metaDescription">
+            <label for="meta_description">Meta Popis</label>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    require([
+        "jquery",
+        "Magento_Ui/js/modal/modal"
+    ],function($, modal) {
+
+        var checkboxes = $('.checkbox-group input[type="checkbox"]');
+
+        var selected = '';
+
+
+        checkboxes.on('click', function () {
+            if ($(this).attr('id') === 'all') {
+                checkboxes.not(this).prop('checked', false);
+            } else { // Pokud byl kliknutý jiný checkbox
+                $('#all').prop('checked', false);
+            }
+
+            selected = checkboxes.filter(':checked').map(function () {
+                return this.value;
+            }).get().join(',');
+        });
+
+        var options = {
+            type: 'popup',
+            responsive: true,
+            title: 'Generování obsahu skrze ChatGPT',
+            buttons: [{
+                text: $.mage.__('Generovat'),
+                class: '',
+                click: function () {
+                    var url = "<?php echo str_replace('admin/','',$block->GenerateCronUrl()); ?>";
+                    url = url.replace('types_str',selected);
+                    window.location.href = url;
+                }
+            },{
+                text: $.mage.__('Zavřít'),
+                class: '',
+                click: function () {
+                    this.closeModal();
+                }
+            }]
+        };
+
+        var popup = modal(options, $('#modal'));
+        $("#button").click(function() {
+            $('#modal').modal('openModal');
+        });
+    });
+</script>
+

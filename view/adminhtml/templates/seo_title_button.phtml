@@ -1,0 +1,19 @@
+
+<div class="admin__field-label" data-bind="visible: $data.labelVisible">
+    <label>
+
+    </label>
+</div>
+<div class="admin__field-control" data-bind="css: {'_with-tooltip': $data.tooltip, '_with-reset': $data.showFallbackReset &amp;&amp; $data.isDifferedFromDefault}">
+    <?php
+    echo $block->getButtonHtml('meta_title');
+    ?>
+</div>
+<script>
+    require(['jquery'], function($) {
+        $(document).ready(function() {
+            $('.admin__scope-old').addClass('admin__field');
+        });
+    });
+</script>
+

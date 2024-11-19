@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <chatgpt>
+            <general>
+                <enabled>1</enabled>
+                <attribute>name</attribute>
+                <api_secret backend_model="Magento\Config\Model\Config\Backend\Encrypted"/>
+                <chatgpt_language>cs_CZ</chatgpt_language>
+                <description_words_count>600</description_words_count>
+                <short_description_words_count>100</short_description_words_count>
+                <meta_description_words_count>255</meta_description_words_count>
+                <meta_title_words_count>70</meta_title_words_count>
+            </general>
+        </chatgpt>
+    </default>
+</config>

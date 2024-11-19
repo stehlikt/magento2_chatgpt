@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <link src='Railsformers_ChatGPT::js/generate.js'/>
+    </head>
+    <body>
+        <referenceBlock name="side.col">
+            <block class="Railsformers\ChatGPT\Block\Adminhtml\Category\GenerateContent" name="generate_content" template="Railsformers_ChatGPT::generate_content_categories.phtml" before="left"/>
+        </referenceBlock>
+        <referenceContainer name="content">
+            <block class="Magento\Framework\View\Element\Template" name="chatGPT_block" template="Railsformers_ChatGPT::js.phtml"/>
+        </referenceContainer>
+    </body>
+</page>
+
